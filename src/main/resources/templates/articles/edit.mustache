@@ -1,0 +1,21 @@
+{{>layouts/header}}
+
+{{#article}}
+<!-- #article을 해주면 input, textarea, a 태그의 value값에 article.id, title, content라고 적을 때, article을 생략시킬 수 있다. -->
+<form class="container" action="/articles/update" method="post">
+<!-- form 태그가 method를 get과 post밖에 지원하지 않는다.(옛날에 만들어진 것이라서) -> patch를 지원하지 않음 ajax로 대체 가능 -->
+    <input name="id" type="hidden" value="{{id}}" /> <!-- id값을 숨겨서 같이 보낸다. -->
+    <div class="mb-3">
+        <label class="form-label">제목</label>
+        <input type="text" class="form-control" name="title" value="{{title}}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">내용</label>
+        <textarea class="form-control" rows="3" name="content">{{content}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/articles/{{id}}">Back</a>
+</form>
+{{/article}}
+
+{{>layouts/footer}}

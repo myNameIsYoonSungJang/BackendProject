@@ -1,0 +1,33 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.8' //버전 2.7.2에서 2.6.8로 내리고 우측에 뜨는 새로고침 버튼을 누르면 다운그레이드 동시에 mustache 파일 한글패치 지원됌.
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories{
+	mavenCentral()
+}
+
+dependencies { // gradle 시작 전에 프로젝트에 추가했던 라이브러리들이 여기에 저장.
+	// 프로젝트 생성 후에 새로 라이브러리를 추가하는 것도 가능하다.
+	//롬복 추가! 새로운 라이브러리
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	//라이브러리를 추가했다면 우측상단 코끼리 새로고침을 누른다.
+	//인터넷으로부터 해당 라이브러리를 다운받아온다.
+	//추가한 라이브러리를 확인하고 싶다면, 우측바의 Gradle -> project명 -> Dependencies -> compileClasspath에서 확인 가능
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-mustache'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtimeOnly 'com.h2database:h2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
