@@ -5,13 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 // ArticleForm에 있는 데이터들을 DB가 인식할 수 있는 Entity 형식으로 변환하기 위해 필요한 Class (Entity Class)
-@Entity // DB가 해당 객체를 인식 가능!  => Dto를 Entity로 변환.
+@Entity // DB가 해당 객체를 인식 가능!  => (해당 클래스로 DB에서 사용할 테이블을 만든다.)
 
 @AllArgsConstructor // 생성자 어노테이션
 @NoArgsConstructor // default생성자 어노테이션
@@ -21,7 +18,9 @@ import javax.persistence.Id;
 public class Article {
 
     @Id //대표값을 지정해준다. LIKE a 주민등록번호
-    @GeneratedValue //1,2,3, .... 자동 생성 어노테이션 (save시점 기준인듯?)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 일반적인 사용법
+    // @GeneratedValue => 1,2,3, .... 자동 생성 어노테이션 (save시점 기준인듯?)
+    // 하지만 DB를 쓰면서 id값이 중복되는 현상을 방지하기 위해 위와 같은 코드를 사용 -> DB가 id를 자동 생성한다.
     private Long id; // 기본적으로 Entity에는 대표값이 있어야한다. 서로 이름이나 내용이 같아도 다름을 판별해주는 대표값.
 
     @Column // DB에서 관리하는 Table의 단위에 연결할 수 있도록 column을 써준다.

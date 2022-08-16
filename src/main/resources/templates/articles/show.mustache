@@ -20,6 +20,10 @@
 </table>
 
 <a href="/articles/{{article.id}}/edit" class="btn btn-primary">Edit</a>
+<!-- html에서 post, get만 지원하고 update와 delete는 지원하지 않음. -->
+<!-- 하여 get을 지원하는 a태그 즉 link 사용 -->
+<a href="/articles/{{article.id}}/delete" class="btn btn-danger">Delete</a>
+
 <a href="/articles">Go to Article List</a>
 
 {{>layouts/footer}}
