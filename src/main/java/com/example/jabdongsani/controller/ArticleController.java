@@ -19,7 +19,7 @@ public class ArticleController {
     @Autowired // spring boot가 미리 생성해놓은 객체를 가져다가 자동으로 연결해준다.
     private ArticleRepository articleRepository; // 뒤에 = new ~~ 안해줘도 되는 이유 @Autowired
 
-    @GetMapping("/articles/new")
+    @GetMapping("/articles/new") // view 탬플릿 반환
     public String newArticleForm(){
         return "articles/new";
     }

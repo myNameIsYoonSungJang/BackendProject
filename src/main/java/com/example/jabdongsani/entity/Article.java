@@ -28,4 +28,11 @@ public class Article {
     @Column
     private String content;
 
+    public void patch(Article article) { // ArticleApiController에서 사용하는 메서드
+        // RestApi에서 Patch를 할 때, 부분 데이터만 보내도 기존의 데이터에 덮어씌워서 patch 될 수 있게 함.
+        if(article.title != null)
+            this.title = article.title;
+        if(article.content != null)
+            this.content = article.content;
+    }
 }
