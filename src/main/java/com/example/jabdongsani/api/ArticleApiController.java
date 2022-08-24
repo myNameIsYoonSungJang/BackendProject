@@ -44,7 +44,7 @@ public class ArticleApiController {
         Article created = articleService.create(dto); // DB에 저장하기 위해 entity 변환
         return (created != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(created) :  // DB에 저장
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); // DB에 저장
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
     }
     // PATCH
