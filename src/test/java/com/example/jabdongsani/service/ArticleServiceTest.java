@@ -145,8 +145,8 @@ class ArticleServiceTest {
         // 실제 데이터.
         Article article = articleService.update(id, dto);
         // 예상 데이터.
-        Article expected = new Article(id, "가가가가", "1111");
-        assertEquals(expected.toString(), article.toString());
+        Article expected = null;
+        assertEquals(expected, article);
     }
 
     @Test
